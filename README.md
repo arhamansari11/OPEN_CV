@@ -18,16 +18,6 @@ Make sure you have Python and OpenCV installed. Use the following command to ins
 pip install opencv-python opencv-python-headless
 ```
 
-## 📂 Project Structure
-```
-OPEN_CV/
-│── examples/        # Code examples for OpenCV applications
-│── datasets/        # Sample datasets for testing
-│── models/          # Pre-trained models for object detection
-│── scripts/         # Helper scripts for various tasks
-│── README.md        # Project documentation
-```
-
 ## 🔥 Getting Started
 Try running a simple OpenCV script to test your installation:
 ```python
@@ -45,10 +35,7 @@ cv2.waitKey(0)
 cv2.destroyAllWindows()
 ```
 
-## 📜 License
-This project is licensed under the **MIT License**.
-
 ## 📧 Contact
 For queries, feel free to reach out:
 - **GitHub**: [arhamansari11](https://github.com/arhamansari11)
-- **Email**: arhamansari.developer@gmail.com
+- **Email**: arhamansari454647@gmail.com

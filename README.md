@@ -1,6 +1,6 @@
 # OPEN CV
 
-![OpenCV Logo](https://upload.wikimedia.org/wikipedia/commons/3/32/OpenCV_Logo_with_text_svg_version.svg)
+<img src="https://upload.wikimedia.org/wikipedia/commons/3/32/OpenCV_Logo_with_text_svg_version.svg" width="200"/>
 
 ## 📌 Overview
 This repository contains projects, tutorials, and implementations using **OpenCV**, an open-source computer vision and machine learning software library. OpenCV provides a vast range of functions for image processing, computer vision, and deep learning applications.

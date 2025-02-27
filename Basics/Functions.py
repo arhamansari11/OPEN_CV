@@ -44,8 +44,8 @@ img = cv.imread(r"D:\Github\Open CV\Basics\Reading Images and Videos\Photos\park
 
 # 6. Crop the Image
 
-# cropped = img[50:200 , 200:400]
-# cv.imshow("Cropped" , cropped)
-# cv.waitKey(0)
+cropped = img[50:200 , 200:400]
+cv.imshow("Cropped" , cropped)
+cv.waitKey(0)
 
 

@@ -10,7 +10,7 @@ This repository contains projects, tutorials, and implementations using **OpenCV
 - Object Detection (Face Detection, Motion Detection, etc.)
 - Feature Extraction (SIFT, SURF, ORB, etc.)
 - Video Processing (Frame Manipulation, Object Tracking, etc.)
-- Machine Learning and Deep Learning Integration
+- Machine Learning and Deep Learning Integration.
 
 ## 🛠 Installation
 Make sure you have Python and OpenCV installed. Use the following command to install OpenCV:

@@ -26,7 +26,7 @@ while True:
             bbox = int(bboxC.xmin * iw) , int(bboxC.ymin * ih) , \
                      int(bboxC.width * iw) , int(bboxC.height * ih) 
 
-            cv.rectangle(img , bbox , (255 , 0 ,255 )  , 2)
+            cv.rectangle(img , bbox , (255 , 0 ,255 )  , 10)
 
 
 

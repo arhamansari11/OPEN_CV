@@ -21,6 +21,10 @@ while True:
     if results.multi_face_landmarks:
         for facelms in results.multi_face_landmarks:
             mpDraw.draw_landmarks(img, facelms, mpFaceMesh.FACEMESH_TESSELATION , drawSpec , drawSpec)
+            for lm in facelms.landmark:
+                ih , iw , ic = img.shape
+                x , y = int(lm.x * iw) , int(lm.y * ih )
+                print(x,y)
 
 
     cTime = time.time()

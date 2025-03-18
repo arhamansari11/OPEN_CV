@@ -12,9 +12,13 @@ cv.imshow("Image" , img)
 
 gray = cv.cvtColor(img , cv.COLOR_BGR2GRAY)
 
+cv.imshow("Gray" , gray)
+
 # BGR TO HSV (Huge Saturation Value)
 
 hsv = cv.cvtColor(img , cv.COLOR_BGR2HSV)
+
+cv.imshow("HSV" , hsv)
 
 # BGR TO LAB
 

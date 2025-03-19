@@ -26,9 +26,11 @@ interface = devices.Activate(
 volume = interface.QueryInterface(IAudioEndpointVolume)
 # volume.GetMute()
 # volume.GetMasterVolumeLevel()
-print(volume.GetVolumeRange())
-# volume.SetMasterVolumeLevel(-20.0, None)
-
+volRange = volume.GetVolumeRange()
+minVol = volRange[0]
+maxVol = volRange[1]
+vol = 0
+volbar = 400
 
 while True:
     success , img = cap.read()
@@ -61,12 +63,20 @@ while True:
                     cv.circle(img , (cx_center , cy_center) , 13 , (255 , 0 , 255) , -1) 
 
                     length = math.hypot(x2 - x1 , y2 - y1)
+
+                    vol = np.interp(length , [50 , 300] , [minVol , maxVol])
+                    volbar = np.interp(length , [50 , 300] , [400 , 150])
+                    volume.SetMasterVolumeLevel(vol, None)
+
+                    print(vol)
                     if length < 60:
                         cv.circle(img , (cx_center , cy_center) , 13 , (255 , 255 , 255) , -1) 
-                        
 
 
             mpDraw.draw_landmarks(img , handlms , mphands.HAND_CONNECTIONS)
+
+    cv.rectangle(img , (50, 150) , (85 , 400) , (0 , 255 , 255) , 3)      
+    cv.rectangle(img , (50, int(volbar)) , (85 , 400) , (0 , 255 , 255) , cv.FILLED )      
 
     cTime = time.time()
     fps = 1 / (cTime - pTime)

@@ -2,6 +2,9 @@ import cv2 as cv
 import mediapipe as mp
 import time
 import numpy as np
+import math
+from comtypes import CLSCTX_ALL
+from pycaw.pycaw import AudioUtilities, IAudioEndpointVolume
 
 wCam , hCam = 640 , 720
 
@@ -16,6 +19,17 @@ mpDraw = mp.solutions.drawing_utils
 pTime = 0
 cTime = 0
 
+
+devices = AudioUtilities.GetSpeakers()
+interface = devices.Activate(
+    IAudioEndpointVolume._iid_, CLSCTX_ALL, None)
+volume = interface.QueryInterface(IAudioEndpointVolume)
+# volume.GetMute()
+# volume.GetMasterVolumeLevel()
+print(volume.GetVolumeRange())
+# volume.SetMasterVolumeLevel(-20.0, None)
+
+
 while True:
     success , img = cap.read()
 
@@ -28,9 +42,8 @@ while True:
             for id , lm in enumerate(handlms.landmark):
                 h , w , c = img.shape
                 cx , cy = int(lm.x * w) , int(lm.y * h)
-                print(id , cx  , cy)
-                # if id == 8 or id  == 4:
-                #     cv.circle(img , (cx , cy) , 15 , (255 , 0 , 255) , -1)  
+                # print(id , cx  , cy)
+
 
                 if id == 4:
                     x1 , y1 = cx , cy
@@ -41,6 +54,16 @@ while True:
 
                 if x1 != 0 and y1 != 0 and x2 != 0 and y2 != 0:
                     cv.line(img , (x1 , y1) , (x2 , y2) , (255 , 0 , 255) , 3)
+
+                    cx_center = (x1 + x2) // 2
+                    cy_center = (y1 + y2) // 2
+
+                    cv.circle(img , (cx_center , cy_center) , 13 , (255 , 0 , 255) , -1) 
+
+                    length = math.hypot(x2 - x1 , y2 - y1)
+                    if length < 60:
+                        cv.circle(img , (cx_center , cy_center) , 13 , (255 , 255 , 255) , -1) 
+                        
 
 
             mpDraw.draw_landmarks(img , handlms , mphands.HAND_CONNECTIONS)

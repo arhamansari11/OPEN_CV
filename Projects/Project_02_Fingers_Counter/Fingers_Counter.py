@@ -15,7 +15,7 @@ print(mylist)
 overlayList = []
 for imgPath in mylist:
     image = cv.imread(f'{folderPath}/{imgPath}')
-    # print(f'{folderPath}/{imgPath}')
+    # print(f'{folderPath} / {imgPath}')
     overlayList.append(image)
 
 
@@ -52,7 +52,7 @@ while True:
     fps = 1 / (cTime - pTime)
     pTime = cTime
 
-    cv.putText(img , str(int(fps)) , (10 , 70) , cv.FONT_HERSHEY_PLAIN , 3 , (255 , 0 , 255) , 3)
+    cv.putText(img , f'FPS: {str(int(fps)) }' , (400 , 70) , cv.FONT_HERSHEY_PLAIN , 3 , (255 , 0 , 255) , 3)
 
     cv.imshow("Image" , img)
     if cv.waitKey(1) & 0xFF == ord('q'):

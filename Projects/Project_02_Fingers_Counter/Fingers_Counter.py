@@ -18,7 +18,6 @@ for imgPath in mylist:
     # print(f'{folderPath}/{imgPath}')
     overlayList.append(image)
 
-print(len(overlayList))
 
 mphands = mp.solutions.hands
 hands = mphands.Hands()
@@ -29,6 +28,11 @@ cTime = 0
 
 while True:
     success , img = cap.read()
+
+    resized_overlay = cv.resize(overlayList[0], (200, 200))
+
+    img[0:200 , 0:200] = resized_overlay
+
 
     imgRGB = cv.cvtColor(img , cv.COLOR_BGR2RGB)
     results = hands.process(imgRGB)

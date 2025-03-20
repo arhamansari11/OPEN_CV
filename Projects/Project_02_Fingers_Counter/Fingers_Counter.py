@@ -1,8 +1,24 @@
 import cv2 as cv
 import mediapipe as mp
 import time
+import os
 
 cap = cv.VideoCapture(0)
+wCam = 640
+hCam = 480
+cap.set(3 , wCam)
+cap.set(4 , hCam)
+
+folderPath = "Images"
+mylist = os.listdir(folderPath)
+print(mylist)
+overlayList = []
+for imgPath in mylist:
+    image = cv.imread(f'{folderPath}/{imgPath}')
+    # print(f'{folderPath}/{imgPath}')
+    overlayList.append(image)
+
+print(len(overlayList))
 
 mphands = mp.solutions.hands
 hands = mphands.Hands()
@@ -23,9 +39,9 @@ while True:
                 # print(id , lm)
                 h , w , c = img.shape
                 cx , cy = int(lm.x * w) , int(lm.y * h)
-                print(id , cx  , cy)
-                if id == 8:
-                    cv.circle(img , (cx , cy) , 25 , (255 , 0 , 255) , -1)
+                # print(id , cx  , cy)
+                # if id == 8:
+                #     cv.circle(img , (cx , cy) , 25 , (255 , 0 , 255) , -1)
             mpDraw.draw_landmarks(img , handlms , mphands.HAND_CONNECTIONS)
 
     cTime = time.time()

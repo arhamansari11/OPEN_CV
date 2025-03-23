@@ -14,12 +14,14 @@ for imPath in myList:
     image = cv.imread(f'{folderPath}/{imPath}')
     overLaylist.append(image)
 
+header = overLaylist[0]
 
-# Video Capture
+# Video Capture through Camera
 
 cap = cv.VideoCapture(0)
 cap.set(3 , 1280)
 cap.set(4 , 720)
+
 
 mphands = mp.solutions.hands
 hands = mphands.Hands()
@@ -31,8 +33,11 @@ cTime = 0
 while True:
     success , img = cap.read()
 
+    img[0:130 , 0:1280] = header
+
     imgRGB = cv.cvtColor(img , cv.COLOR_BGR2RGB)
     results = hands.process(imgRGB)
+
 
     if results.multi_hand_landmarks:
         for handlms in results.multi_hand_landmarks:
@@ -42,6 +47,8 @@ while True:
                 if id == 8:
                     cv.circle(img , (cx , cy) , 25 , (255 , 0 , 255) , -1)
             mpDraw.draw_landmarks(img , handlms , mphands.HAND_CONNECTIONS)
+
+
 
     cTime = time.time()
     fps = 1 / (cTime - pTime)

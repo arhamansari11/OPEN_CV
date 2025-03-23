@@ -4,6 +4,8 @@ import time
 import numpy as np
 import os   
 
+# Read the Images
+
 folderPath = "Header"
 myList = os.listdir(folderPath)
 overLaylist = []
@@ -12,7 +14,12 @@ for imPath in myList:
     image = cv.imread(f'{folderPath}/{imPath}')
     overLaylist.append(image)
 
+
+# Video Capture
+
 cap = cv.VideoCapture(0)
+cap.set(3 , 1280)
+cap.set(4 , 720)
 
 mphands = mp.solutions.hands
 hands = mphands.Hands()

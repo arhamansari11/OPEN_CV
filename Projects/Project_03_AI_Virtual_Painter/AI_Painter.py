@@ -24,7 +24,6 @@ while True:
             for id , lm in enumerate(handlms.landmark):
                 h , w , c = img.shape
                 cx , cy = int(lm.x * w) , int(lm.y * h)
-                print(id , cx  , cy)
                 if id == 8:
                     cv.circle(img , (cx , cy) , 25 , (255 , 0 , 255) , -1)
             mpDraw.draw_landmarks(img , handlms , mphands.HAND_CONNECTIONS)

@@ -31,8 +31,10 @@ pTime = 0
 cTime = 0
 
 while True:
-    success , img = cap.read()
 
+    # Setting up Header Image There.
+
+    success , img = cap.read()
     img[0:130 , 0:1280] = header
 
     imgRGB = cv.cvtColor(img , cv.COLOR_BGR2RGB)

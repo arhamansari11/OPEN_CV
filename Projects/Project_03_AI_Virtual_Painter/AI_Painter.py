@@ -35,11 +35,18 @@ while True:
     # Setting up Header Image There.
 
     success , img = cap.read()
-    img[0:130 , 0:1280] = header
+    img = cv.flip(img , 1)
+    img[0:130 , 0:1280] = header    
+
+
+    # Check which fingers are up
+
+    # If selection mood - When two fingers are up
+
+    # If we have the drawing mood -> When the index finger is up
 
     imgRGB = cv.cvtColor(img , cv.COLOR_BGR2RGB)
     results = hands.process(imgRGB)
-
 
     if results.multi_hand_landmarks:
         for handlms in results.multi_hand_landmarks:

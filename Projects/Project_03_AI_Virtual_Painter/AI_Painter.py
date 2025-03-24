@@ -4,7 +4,7 @@ import time
 import numpy as np
 import os   
 
-# Read the Images
+# Read the Images from the folder
 
 folderPath = "Header"
 myList = os.listdir(folderPath)
